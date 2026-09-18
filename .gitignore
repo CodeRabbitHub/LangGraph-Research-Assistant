@@ -10,4 +10,7 @@ wheels/
 .venv
 .env
 
+.langgraph_api/
+.langgraph_api/*
 *.pckl
+*.pckl*
