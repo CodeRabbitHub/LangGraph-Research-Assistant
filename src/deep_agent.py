@@ -1,5 +1,5 @@
 from langgraph.graph import StateGraph, START, END
-from src.utils.states import ResearchGraphState
+from src.utils.states import ResearchGraphState, ResearchGraphInput
 from src.utils.nodes import (
     create_analysts,
     human_feedback,
@@ -11,8 +11,8 @@ from src.utils.nodes import (
 from src.answering_questions import interview_builder
 from src.utils.edges import initiate_all_interviews
 
-# 1. Initialize the master StateGraph with ResearchGraphState
-builder = StateGraph(ResearchGraphState)
+# 1. Initialize master StateGraph with dedicated user input_schema
+builder = StateGraph(ResearchGraphState, input_schema=ResearchGraphInput)
 
 # 2. Add Nodes
 builder.add_node("create_analysts", create_analysts)
@@ -52,4 +52,5 @@ builder.add_edge(
 builder.add_edge("finalize_report", END)
 
 # 4. Compile the complete Graph
-graph = builder.compile(interrupt_before=["human_feedback"])
+# Note: In-node interrupt() inside human_feedback handles user input cleanly
+graph = builder.compile()

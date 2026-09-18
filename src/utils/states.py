@@ -25,6 +25,13 @@ class InterviewState(MessagesState):
     sections: list                         # Output memo section written from this interview
 
 
+class ResearchGraphInput(TypedDict):
+    """User input schema for starting a deep research workflow."""
+    topic: str                                         # Research topic provided by user
+    max_analysts: int                                  # Target number of analysts to generate
+    human_analyst_feedback: NotRequired[Optional[str]] # Optional initial feedback
+
+
 class ResearchGraphState(TypedDict):
     """
     State for Graph #3: Full hierarchical research workflow.
@@ -33,9 +40,9 @@ class ResearchGraphState(TypedDict):
     topic: str                                         # Research topic
     max_analysts: int                                  # Number of analysts
     human_analyst_feedback: NotRequired[Optional[str]] # Editorial feedback from human
-    analysts: List[Analyst]                            # List of confirmed analysts
-    sections: Annotated[list, operator.add]            # Reduced list of all analyst memos
-    introduction: str                                  # Generated report introduction
-    content: str                                       # Generated report body (Insights)
-    conclusion: str                                    # Generated report conclusion
-    final_report: str                                  # Complete assembled Markdown report
+    analysts: NotRequired[List[Analyst]]               # List of confirmed analysts
+    sections: Annotated[NotRequired[list], operator.add] # Reduced list of all analyst memos
+    introduction: NotRequired[str]                     # Generated report introduction
+    content: NotRequired[str]                          # Generated report body (Insights)
+    conclusion: NotRequired[str]                       # Generated report conclusion
+    final_report: NotRequired[str]                     # Complete assembled Markdown report

@@ -27,6 +27,5 @@ builder.add_conditional_edges(
 builder.add_edge("dummy", END)
 
 # 4. Compile the Graph
-# interrupt_before=['human_feedback'] ensures that LangGraph Studio and runners
-# pause before executing human_feedback, allowing review.
-graph = builder.compile(interrupt_before=["human_feedback"])
+# Note: In-node interrupt() inside human_feedback handles user input cleanly
+graph = builder.compile()
