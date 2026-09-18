@@ -1,0 +1,20 @@
+[project]
+name = "langgraph-research-assistant"
+version = "0.1.0"
+description = "A multi-agent research workflow that creates analyst personas, runs parallel interview loops with web search, and synthesizes the results into a cited report using LangGraph, LangChain, OpenAI, and Tavily."
+readme = "README.md"
+authors = [
+    { name = "CodeRabbitHub", email = "amanroland@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "colorama>=0.4.6",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.7.0",
+    "langchain>=1.4.0",
+    "langchain-community>=0.4.2",
+    "langchain-openai>=1.6.0",
+    "langchain-tavily>=0.2.18",
+    "langgraph>=1.2.11",
+    "langgraph-cli[inmem]>=0.4.31",
+]
